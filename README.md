@@ -1,0 +1,2 @@
+# Client
+Stacksift Frontend Client
