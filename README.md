@@ -4,6 +4,9 @@ A Stacksift client for macOS.
 
 This is quick-and-dirty [Stacksift](https://www.stacksift.io) client. It provides minimal filtering of reports, along with a way to navigate the graph of crash relationships that Stacksift maintains. It requires macOS 11.0 or later.
 
+![Screenshot with an all time filter active, showing a graph and list of crash group results](screenshots/graph.png)
+![Screenshot showing crash relationship path traversal, with a stacktrace visible](screenshots/trace.png)
+
 ## Installation
 
 A pre-built release binary is on its way! For now, you'll need to build from source.
