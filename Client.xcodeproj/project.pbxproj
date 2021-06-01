@@ -107,7 +107,7 @@
 		C9E439A2261CB42B00A951F8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C9E439A7261CB42B00A951F8 /* Client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Client.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9E439AA261CB42B00A951F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C9E439AF261CB42B00A951F8 /* Client.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Client.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C9E439AF261CB42B00A951F8 /* Stacksift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stacksift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9E439B1261CB42B00A951F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C9E439B2261CB42B00A951F8 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
 		C9E439B7261CB42B00A951F8 /* Tests iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests iOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -220,7 +220,7 @@
 			isa = PBXGroup;
 			children = (
 				C9E439A7261CB42B00A951F8 /* Client.app */,
-				C9E439AF261CB42B00A951F8 /* Client.app */,
+				C9E439AF261CB42B00A951F8 /* Stacksift.app */,
 				C9E439B7261CB42B00A951F8 /* Tests iOS.xctest */,
 				C9E439C2261CB42B00A951F8 /* Tests macOS.xctest */,
 			);
@@ -313,7 +313,7 @@
 				C9FC6055264324CA00A3D53B /* Sparkle */,
 			);
 			productName = "Client (macOS)";
-			productReference = C9E439AF261CB42B00A951F8 /* Client.app */;
+			productReference = C9E439AF261CB42B00A951F8 /* Stacksift.app */;
 			productType = "com.apple.product-type.application";
 		};
 		C9E439B6261CB42B00A951F8 /* Tests iOS */ = {
@@ -682,6 +682,9 @@
 				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 4;
+				DEVELOPMENT_TEAM = 77X93NZ3G2;
+				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = macOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -689,8 +692,9 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = io.stacksift.Client;
-				PRODUCT_NAME = Client;
+				PRODUCT_NAME = Stacksift;
 				SDKROOT = macosx;
 				SWIFT_VERSION = 5.0;
 			};
@@ -704,6 +708,9 @@
 				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 4;
+				DEVELOPMENT_TEAM = 77X93NZ3G2;
+				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = macOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -711,8 +718,9 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = io.stacksift.Client;
-				PRODUCT_NAME = Client;
+				PRODUCT_NAME = Stacksift;
 				SDKROOT = macosx;
 				SWIFT_VERSION = 5.0;
 			};
