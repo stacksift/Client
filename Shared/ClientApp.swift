@@ -59,6 +59,19 @@ struct ClientApp: App {
         }
         .commands {
             SidebarCommands()
+            CommandGroup(after: CommandGroupPlacement.appSettings) {
+                Button("Check for Update…") {
+                    SUUpdater.shared().checkForUpdates(self)
+                }
+            }
+            CommandGroup(after: CommandGroupPlacement.sidebar) {
+                Divider()
+                Button("Reload") {
+                    NotificationCenter.default.post(name: .RefreshData, object: nil)
+                }
+                .keyboardShortcut("r")
+                Divider()
+            }
         }
     }
 }

@@ -9,11 +9,19 @@ public class TimeseriesResultsViewModel: ObservableObject {
     let filter: Filter
     let services: Services
     private var cancellationToken: AnyCancellable?
+    private var subscriptions = Set<AnyCancellable>()
 
     public init(services: Services, filter: Filter) {
         self.services = services
         self.results = []
         self.filter = filter
+
+        NotificationCenter.default.publisher(for: .RefreshData)
+            .receive(on: RunLoop.main)
+            .sink { _ in
+                self.reload()
+            }
+            .store(in: &subscriptions)
     }
 
     public func reload() {
