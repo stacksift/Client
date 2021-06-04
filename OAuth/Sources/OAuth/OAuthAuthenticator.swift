@@ -2,6 +2,7 @@ import Foundation
 import Combine
 import CombineExt
 import SiftNetwork
+import KeychainAccess
 
 public class OauthAuthenticator {
     public typealias Token = String
@@ -43,12 +44,24 @@ public class OauthAuthenticator {
 extension OauthAuthenticator {
     private func storedTokenPublisher() -> AnyPublisher<Token, Error> {
         return Future { promise in
-            promise(.failure(NSError(domain: "failed", code: 1)))
+            OperationQueue.main.addOperation {
+                let keychain = Keychain(service: self.configuration.keychainItemName)
+
+                if let token = keychain["access"] {
+                    promise(.success(token))
+                } else {
+                    promise(.failure(NSError(domain: "failed", code: 1)))
+                }
+            }
+
+
         }.eraseToAnyPublisher()
     }
 
-    private func storeLoginResponse(_ login: LoginResponse) {
-        print("should store login here")
+    private func storeLoginResponse(_ token: Token) {
+        let keychain = Keychain(service: configuration.keychainItemName)
+
+        keychain["access"] = token
     }
 }
 
@@ -70,7 +83,7 @@ extension OauthAuthenticator {
     private func userAuthenticationTokenPublisher() -> AnyPublisher<Token, Error> {
         userAuthenticationPublisher()
             .map { (token) -> Token in
-//                self.storeLoginResponse(login)
+                self.storeLoginResponse(token)
 
                 return token
             }

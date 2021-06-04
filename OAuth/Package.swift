@@ -14,6 +14,7 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/CombineCommunity/CombineExt", from: "1.2.0"),
+        .package(url: "https://github.com/kishikawakatsumi/KeychainAccess", from: "4.2.2"),
         .package(path: "../SiftNetwork"),
     ],
     targets: [
@@ -21,7 +22,7 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "OAuth",
-            dependencies: ["SiftNetwork", "CombineExt"]),
+            dependencies: ["SiftNetwork", "CombineExt", "KeychainAccess"]),
         .testTarget(
             name: "OAuthTests",
             dependencies: ["OAuth"]),

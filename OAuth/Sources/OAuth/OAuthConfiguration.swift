@@ -14,6 +14,7 @@ public struct OAuthLogin {
 
 public protocol OAuthConfiguration {
     var webAuthenticationConfig: WebAuthenticationConfiguration { get }
+    var keychainItemName: String { get }
 
     func accessURLRequest(with callback: URL) throws -> URLRequest
     func login(from data: Data) throws -> OAuthLogin
@@ -49,12 +50,14 @@ public struct BasicOauthConfiguration {
     public let clientPassword: String
     public let callbackURLScheme = "stacksift-oauth-login"
     public let scopes: [String]
+    public let keychainItemName: String
     let authenticationSessionConfigurator = SessionConfiguration()
 
-    public init(clientId: String, clientPassword: String, scopes: [String]) {
+    public init(clientId: String, clientPassword: String, scopes: [String], keychainItemName: String) {
         self.clientId = clientId
         self.clientPassword = clientPassword
         self.scopes = scopes
+        self.keychainItemName = keychainItemName
     }
 
     private var scopeString: String {
