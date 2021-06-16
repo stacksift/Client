@@ -45,13 +45,13 @@ extension OauthAuthenticator {
     private func storedTokenPublisher() -> AnyPublisher<Token, Error> {
         return Future { promise in
             OperationQueue.main.addOperation {
-                let keychain = Keychain(service: self.configuration.keychainItemName)
-
-                if let token = keychain["access"] {
-                    promise(.success(token))
-                } else {
+//                let keychain = Keychain(service: self.configuration.keychainItemName)
+//
+//                if let token = keychain["access"] {
+//                    promise(.success(token))
+//                } else {
                     promise(.failure(NSError(domain: "failed", code: 1)))
-                }
+//                }
             }
 
 
@@ -59,9 +59,9 @@ extension OauthAuthenticator {
     }
 
     private func storeLoginResponse(_ token: Token) {
-        let keychain = Keychain(service: configuration.keychainItemName)
-
-        keychain["access"] = token
+//        let keychain = Keychain(service: configuration.keychainItemName)
+//
+//        keychain["access"] = token
     }
 }
 

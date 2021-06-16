@@ -2,17 +2,15 @@ import SwiftUI
 import SiftServices
 import ServiceImplemenations
 import Models
-import OAuth
 import MockServiceImplemenations
 import Sparkle
 
 extension Services {
     init() {
-        let config = BasicOauthConfiguration(clientId: "4m6dp6bu89snr7s0prhp7dkj78",
-                                             clientPassword: "1m2a0q4s7t8q0ivoucoljldfthci6psc1f022621bao4lctmon7a",
-                                             scopes: ["openid", "profile"],
-                                             keychainItemName: "io.stacksift.token")
-        self.init(networkService: AuthenticatedNeworkService(configuration: config))
+        let loader = URLSession(configuration: .default, delegate: nil, delegateQueue: .main)
+        let service = AuthenticatedNeworkService(loader: loader)
+        
+        self.init(networkService: service)
     }
 }
 

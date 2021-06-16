@@ -14,11 +14,12 @@ let package = Package(
     ],
     dependencies: [
         .package(path: "../SiftNetwork"),
-        .package(path: "../OAuth"),
+        .package(url: "https://github.com/kishikawakatsumi/KeychainAccess", from: "4.2.2"),
+        .package(url: "https://github.com/stacksift/OAuthenticator", from: "0.1.0"),
     ],
     targets: [
         .target(name: "SiftServices", dependencies: ["SiftNetwork"]),
-        .target(name: "ServiceImplemenations", dependencies: ["SiftServices", "OAuth"]),
+        .target(name: "ServiceImplemenations", dependencies: ["SiftServices", "OAuthenticator", "KeychainAccess"]),
         .target(name: "MockServiceImplemenations", dependencies: ["SiftServices"]),
         .testTarget(name: "ServiceTests", dependencies: ["SiftServices"]),
     ]

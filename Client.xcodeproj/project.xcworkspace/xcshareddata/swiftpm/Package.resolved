@@ -20,6 +20,24 @@
         }
       },
       {
+        "package": "OAuthenticator",
+        "repositoryURL": "https://github.com/stacksift/OAuthenticator",
+        "state": {
+          "branch": null,
+          "revision": "68e1410b8889b230b6f5484211017d4b3ad4adfa",
+          "version": "0.1.0"
+        }
+      },
+      {
+        "package": "OperationPlus",
+        "repositoryURL": "https://github.com/ChimeHQ/OperationPlus.git",
+        "state": {
+          "branch": null,
+          "revision": "bb81e4f1bb017edcd1307f950e011d1f4b1ea3a6",
+          "version": "1.5.2"
+        }
+      },
+      {
         "package": "Sparkle",
         "repositoryURL": "https://github.com/sparkle-project/Sparkle",
         "state": {
