@@ -46,9 +46,10 @@ extension EnvironmentValues {
 @main
 struct ClientApp: App {
     @State var pathModel = PathViewModel()
+    private var updateController: SPUStandardUpdaterController
 
     init() {
-        let _ = SUUpdater.shared()
+        self.updateController = SPUStandardUpdaterController(updaterDelegate: nil, userDriverDelegate: nil)
     }
 
     var body: some Scene {
@@ -60,7 +61,7 @@ struct ClientApp: App {
             SidebarCommands()
             CommandGroup(after: CommandGroupPlacement.appSettings) {
                 Button("Check for Update…") {
-                    SUUpdater.shared().checkForUpdates(self)
+                    self.updateController.checkForUpdates(self)
                 }
             }
             CommandGroup(after: CommandGroupPlacement.sidebar) {

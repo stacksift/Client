@@ -1,0 +1,3 @@
+[submodule "sparkle"]
+	path = sparkle
+	url = https://github.com/sparkle-project/Sparkle

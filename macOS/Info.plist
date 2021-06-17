@@ -38,5 +38,7 @@
 	<false/>
 	<key>SUFeedURL</key>
 	<string>https://www.stacksift.io/Appcast.xml</string>
+	<key>SUPublicEDKey</key>
+	<string>ajgYVn7/gxcs6qdIH/M8m0utKNZavk3MkaqeGvk1qA8=</string>
 </dict>
 </plist>
