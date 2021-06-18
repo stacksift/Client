@@ -137,7 +137,7 @@ extension EventTableView.Coordinator: NSTableViewDelegate {
 
         switch tableColumn?.identifier {
         case .eventTypeColumn?:
-            view.stringValue = event.kind.displayName
+            view.stringValue = event.kindDisplayName
         case .eventModuleColumn?:
             view.stringValue = event.module
         case .eventTitleColumn?:

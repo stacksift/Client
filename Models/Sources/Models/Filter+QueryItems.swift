@@ -2,9 +2,10 @@ import Foundation
 
 extension Filter {
     public var queryItems: [URLQueryItem] {
-        let kindParams = kinds.map({ ("type", $0.rawValue) })
+        let kindParams = kinds.map({ ("type", $0) })
         let hostAppParams = hostExecutables.map({ ("host", $0) })
         let platformParams = platforms.map({ ("platform", $0) })
+        let organizationParams = organizations.map({ ("organization", $0) })
 
         let epochRange = dateRange.epochTimeRange
 
@@ -18,7 +19,7 @@ extension Filter {
             items.append(URLQueryItem(name: "end_time", value: "\(epochRange.upperBound)"))
         }
 
-        let pairs = kindParams + hostAppParams + platformParams
+        let pairs = kindParams + hostAppParams + platformParams + organizationParams
 
         for (key, value) in pairs {
             items.append(URLQueryItem(name: key, value: value))

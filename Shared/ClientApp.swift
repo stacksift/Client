@@ -21,7 +21,7 @@ struct ServicesKey: EnvironmentKey {
     static var mockDefaults: Services {
         let netService = MockNetworkService()
 
-        let event1 = Event(id: "event-1", kind: .deepestFrame, title: "Event 1")
+        let event1 = Event(id: "event-1", kind: "frame.deepest-interesting", title: "Event 1")
 
         netService.addMockResponse("https://api.stacksift.io/v1/events", encodable: [event1])
 
@@ -29,7 +29,7 @@ struct ServicesKey: EnvironmentKey {
 
         netService.addMockResponse("https://api.stacksift.io/v1/reports/report-1", encodable: report1)
 
-        let event2 = Event(id: "event-2", kind: .deepestFrame, title: "Event 2")
+        let event2 = Event(id: "event-2", kind: "frame.deepest-interesting", title: "Event 2")
 
         netService.addMockResponse("https://api.stacksift.io/v1/events", encodable: [event2])
 

@@ -2,14 +2,14 @@ import Foundation
 
 public struct Event: Identifiable {
     public var id: String
-    public var kind: Kind
+    public var kind: String
     public var module: String
     public var title: String
     public var subtitle: String
     public var reportId: String
     public var metrics: EventMetrics
 
-    public init(id: String, kind: Event.Kind, title: String) {
+    public init(id: String, kind: String, title: String) {
         self.id = id
         self.kind = kind
         self.module = "no module"
@@ -17,6 +17,23 @@ public struct Event: Identifiable {
         self.subtitle = "none"
         self.reportId = "report-1"
         self.metrics = EventMetrics()
+    }
+
+    public var kindDisplayName: String {
+        switch kind {
+        case "frame.deepest-interesting":
+            return "Deepest Frame"
+        case "resource":
+            return "Resource"
+        case "exception":
+            return "Exception"
+        case "note.mach_msg_trap":
+            return "mach_msg_trap"
+        case "note.objc_msgSend":
+            return "objc_msgSend"
+        default:
+            return kind
+        }
     }
 }
 
@@ -32,35 +49,3 @@ extension Event: Codable {
     }
 }
 
-extension Event {
-    public enum Kind: String {
-        case deepestFrame = "frame.deepest-interesting"
-        case resource
-        case exception
-        case machMsgTrap = "note.mach_msg_trap"
-        case objcMsgSend = "note.objc_msgSend"
-        case unset = ""
-
-        public static let all = Set<Kind>([.deepestFrame, .resource, .exception])
-
-        public var displayName: String {
-            switch self {
-            case .deepestFrame:
-                return "Deepest Frame"
-            case .resource:
-                return "Resource"
-            case .exception:
-                return "Exception"
-            case .machMsgTrap:
-                return "mach_msg_trap"
-            case .objcMsgSend:
-                return "objc_msgSend"
-            case .unset:
-                return "Unknown"
-            }
-        }
-    }
-}
-
-extension Event.Kind: Codable {
-}

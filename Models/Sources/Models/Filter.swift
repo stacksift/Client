@@ -2,17 +2,19 @@ import Foundation
 
 public struct Filter {
     public var title: String
-    public var kinds: Set<Event.Kind>
+    public var kinds: Set<String>
     public var hostExecutables: [String]
     public var dateRange: Range<Date>
     public var platforms: [String]
+    public var organizations: [String]
 
-    public init(title: String, kinds: Set<Event.Kind> = Event.Kind.all, hostExecutables: [String] = [], dateRange: Range<Date>, platforms: [String] = []) {
+    public init(title: String, kinds: Set<String> = Set(), hostExecutables: [String] = [], dateRange: Range<Date>, platforms: [String] = [], organizations: [String] = []) {
         self.title = title
         self.kinds = kinds
         self.hostExecutables = hostExecutables
         self.dateRange = dateRange
         self.platforms = platforms
+        self.organizations = organizations
     }
 }
 
