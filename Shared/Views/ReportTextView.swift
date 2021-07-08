@@ -21,13 +21,12 @@ struct ReportTextView_Previews: PreviewProvider {
 }
 
 struct NewReportTextView: NSViewRepresentable {
-    let text: String
+    let text: NSAttributedString
 
     func makeNSView(context: Context) -> NSScrollView {
         let textView = NSTextView()
 
         textView.isEditable = false
-        textView.font = NSFont.monospacedSystemFont(ofSize: NSFont.systemFontSize, weight: .regular)
 
         textView.isVerticallyResizable = true
         textView.isHorizontallyResizable = true
@@ -54,6 +53,6 @@ struct NewReportTextView: NSViewRepresentable {
     func updateNSView(_ nsView: NSScrollView, context: Context) {
         let textView = nsView.documentView as! NSTextView
 
-        textView.string = text
+        textView.textStorage?.setAttributedString(text)
     }
 }

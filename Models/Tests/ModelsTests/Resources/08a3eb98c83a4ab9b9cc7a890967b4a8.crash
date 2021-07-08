@@ -13,76 +13,76 @@ Report Version:        12
 
 Crashed Thread:        0
 
-Exception Type:
+Exception Type:        EXC_BAD_INSTRUCTION (SIGTRAP)
 Exception Codes:
 Exception Note:
 
-Termination Signal:
-Termination Reason:
+Termination Signal:    Trace/BPT trap: 5
+Termination Reason:    Namespace SIGNAL, Code 0x5
 Terminating Process:
 
 Application Specific Information:
 
 
 Thread 0 Crashed:
-0   Chime                            0x000000000a9e25d1  + 0
-1   Chime                            0x000000000aaadadd  + 0
-2   Chime                            0x000000000aa6f822  + 0
-3   Chime                            0x000000000aa73cd4  + 0
-4   Chime                            0x000000000aa9d0de  + 0
-5   com.apple.Foundation             0x000000002145c01c __NSBLOCKOPERATION_IS_CALLING_OUT_TO_A_BLOCK__ + 0
-6   com.apple.Foundation             0x000000002145bf14 -[NSBlockOperation main] + 0
-7   com.apple.Foundation             0x000000002145bea5 __NSOPERATION_IS_INVOKING_MAIN__ + 0
-8   com.apple.Foundation             0x000000002145b156 -[NSOperation start] + 0
-9   com.apple.Foundation             0x000000002145ae3a __NSOPERATIONQUEUE_IS_STARTING_AN_OPERATION__ + 0
-10  com.apple.Foundation             0x000000002145ad0d __NSOQSchedule_f + 0
-11  libdispatch.dylib                0x00000000204581d5 _dispatch_block_async_invoke2 + 0
-12  libdispatch.dylib                0x000000002044b7c7 _dispatch_client_callout + 0
-13  libdispatch.dylib                0x0000000020457b86 _dispatch_main_queue_callback_4CF + 0
-14  com.apple.CoreFoundation         0x000000002072b970 __CFRUNLOOP_IS_SERVICING_THE_MAIN_DISPATCH_QUEUE__ + 0
-15  com.apple.CoreFoundation         0x00000000206ed852 __CFRunLoopRun + 0
-16  com.apple.CoreFoundation         0x00000000206ec6ce CFRunLoopRunSpecific + 0
-17  com.apple.HIToolbox              0x0000000028974630 RunCurrentEventLoopInMode + 0
-18  com.apple.HIToolbox              0x000000002897442c ReceiveNextEventCommon + 0
-19  com.apple.HIToolbox              0x000000002897414f _BlockUntilNextEventMatchingListInModeWithFilter + 0
-20  com.apple.AppKit                 0x0000000022f0c9b1 _DPSNextEvent + 0
-21  com.apple.AppKit                 0x0000000022f0b177 -[NSApplication(NSEvent) _nextEventMatchingEventMask:untilDate:inMode:dequeue:] + 0
-22  com.apple.AppKit                 0x0000000022efd68a -[NSApplication run] + 0
-23  com.apple.AppKit                 0x0000000022ed196f NSApplicationMain + 0
-24  Chime                            0x000000000a9b1929  + 0
-25  libdyld.dylib                    0x0000000020611621 start + 0
+0   Chime                            0x000000000a9e25d1
+1   Chime                            0x000000000aaadadd
+2   Chime                            0x000000000aa6f822
+3   Chime                            0x000000000aa73cd4
+4   Chime                            0x000000000aa9d0de
+5   com.apple.Foundation             0x000000002145c01c __NSBLOCKOPERATION_IS_CALLING_OUT_TO_A_BLOCK__
+6   com.apple.Foundation             0x000000002145bf14 -[NSBlockOperation main]
+7   com.apple.Foundation             0x000000002145bea5 __NSOPERATION_IS_INVOKING_MAIN__
+8   com.apple.Foundation             0x000000002145b156 -[NSOperation start]
+9   com.apple.Foundation             0x000000002145ae3a __NSOPERATIONQUEUE_IS_STARTING_AN_OPERATION__
+10  com.apple.Foundation             0x000000002145ad0d __NSOQSchedule_f
+11  libdispatch.dylib                0x00000000204581d5 _dispatch_block_async_invoke2
+12  libdispatch.dylib                0x000000002044b7c7 _dispatch_client_callout
+13  libdispatch.dylib                0x0000000020457b86 _dispatch_main_queue_callback_4CF
+14  com.apple.CoreFoundation         0x000000002072b970 __CFRUNLOOP_IS_SERVICING_THE_MAIN_DISPATCH_QUEUE__
+15  com.apple.CoreFoundation         0x00000000206ed852 __CFRunLoopRun
+16  com.apple.CoreFoundation         0x00000000206ec6ce CFRunLoopRunSpecific
+17  com.apple.HIToolbox              0x0000000028974630 RunCurrentEventLoopInMode
+18  com.apple.HIToolbox              0x000000002897442c ReceiveNextEventCommon
+19  com.apple.HIToolbox              0x000000002897414f _BlockUntilNextEventMatchingListInModeWithFilter
+20  com.apple.AppKit                 0x0000000022f0c9b1 _DPSNextEvent
+21  com.apple.AppKit                 0x0000000022f0b177 -[NSApplication(NSEvent) _nextEventMatchingEventMask:untilDate:inMode:dequeue:]
+22  com.apple.AppKit                 0x0000000022efd68a -[NSApplication run]
+23  com.apple.AppKit                 0x0000000022ed196f NSApplicationMain
+24  Chime                            0x000000000a9b1929
+25  libdyld.dylib                    0x0000000020611621 start
 
 Thread 1:
-0   libsystem_kernel.dylib           0x00000000205c1e7e mach_msg_trap + 0
-1   libsystem_kernel.dylib           0x00000000205c8c09 thread_get_state + 0
-2                                    0x0000000088c32db8  + 0
+0   libsystem_kernel.dylib           0x00000000205c1e7e mach_msg_trap
+1   libsystem_kernel.dylib           0x00000000205c8c09 thread_get_state
+2                                    0x0000000088c32db8
 
 Thread 2:
-0   libsystem_kernel.dylib           0x00000000205c1e7e mach_msg_trap + 0
-1   com.apple.CoreFoundation         0x00000000206eebf7 __CFRunLoopServiceMachPort + 0
-2   com.apple.CoreFoundation         0x00000000206ed2ca __CFRunLoopRun + 0
-3   com.apple.CoreFoundation         0x00000000206ec6ce CFRunLoopRunSpecific + 0
-4   com.apple.AppKit                 0x00000000230927c6 _NSEventThread + 0
-5   libsystem_pthread.dylib          0x00000000205f6950 _pthread_start + 0
-6   libsystem_pthread.dylib          0x00000000205f247b thread_start + 0
+0   libsystem_kernel.dylib           0x00000000205c1e7e mach_msg_trap
+1   com.apple.CoreFoundation         0x00000000206eebf7 __CFRunLoopServiceMachPort
+2   com.apple.CoreFoundation         0x00000000206ed2ca __CFRunLoopRun
+3   com.apple.CoreFoundation         0x00000000206ec6ce CFRunLoopRunSpecific
+4   com.apple.AppKit                 0x00000000230927c6 _NSEventThread
+5   libsystem_pthread.dylib          0x00000000205f6950 _pthread_start
+6   libsystem_pthread.dylib          0x00000000205f247b thread_start
 
 Thread 3:
-0   libsystem_kernel.dylib           0x00000000205c353e __workq_kernreturn + 0
-1   libsystem_pthread.dylib          0x00000000205f2467 start_wqthread + 0
+0   libsystem_kernel.dylib           0x00000000205c353e __workq_kernreturn
+1   libsystem_pthread.dylib          0x00000000205f2467 start_wqthread
 
 Thread 4:
-0   libsystem_kernel.dylib           0x00000000205c353e __workq_kernreturn + 0
-1   libsystem_pthread.dylib          0x00000000205f2467 start_wqthread + 0
+0   libsystem_kernel.dylib           0x00000000205c353e __workq_kernreturn
+1   libsystem_pthread.dylib          0x00000000205f2467 start_wqthread
 
 Thread 5:
-0   libsystem_kernel.dylib           0x00000000205c353e __workq_kernreturn + 0
-1   libsystem_pthread.dylib          0x00000000205f2467 start_wqthread + 0
+0   libsystem_kernel.dylib           0x00000000205c353e __workq_kernreturn
+1   libsystem_pthread.dylib          0x00000000205f2467 start_wqthread
 
 Thread 6:
-0                                    0x0000000000000000  + 0
+0                                    0x0000000000000000
 
 Thread 7:
-0                                    0x0000000000000000  + 0
+0                                    0x0000000000000000
 
 Thread 0 crashed with x86 Thread State (64-bit):
 

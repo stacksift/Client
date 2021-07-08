@@ -8,19 +8,19 @@ class ReportViewModel: ObservableObject {
     let services: Services
     private var cancellationToken: AnyCancellable?
 
-    @Published public private(set) var text: String
+    @Published public private(set) var text: NSAttributedString
     @Published public private(set) var events: [Event]
     
     init(services: Services, reportId: String) {
         self.services = services
         self.reportId = reportId
-        self.text = ""
+        self.text = NSAttributedString()
         self.events = []
     }
 
     private func update(with report: Report?) {
         guard let report = report else {
-            self.text = "nothing"
+            self.text = NSAttributedString(string: "nothing")
             return
         }
 
@@ -30,7 +30,7 @@ class ReportViewModel: ObservableObject {
             let renderValue = try? report.renderReportCrash()
 
             DispatchQueue.main.async {
-                self.text = renderValue ?? "failed"
+                self.text = renderValue ?? NSAttributedString(string: "failed")
             }
         }
     }
