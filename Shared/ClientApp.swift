@@ -43,19 +43,51 @@ extension EnvironmentValues {
     }
 }
 
+extension NSNotification.Name {
+    static let RefreshData = Notification.Name("RefreshData")
+}
+
 @main
 struct ClientApp: App {
     @State var pathModel = PathViewModel()
+    @State var editingFilter = Filter.newFilter
+    @State var editingFilterPresented = false
+    @StateObject var filterModel: FilterListViewModel
     private var updateController: SPUStandardUpdaterController
 
     init() {
         self.updateController = SPUStandardUpdaterController(updaterDelegate: nil, userDriverDelegate: nil)
+        self._filterModel = StateObject(wrappedValue: FilterListViewModel())
+
+        let defaultFilters = Filter.defaultList.compactMap({ $0.toDictionary() })
+
+        UserDefaults.standard.register(defaults: [
+            "NSApplicationCrashOnExceptions": true,
+            "Filters": defaultFilters,
+        ])
     }
 
+    var isEditing: Binding<Bool> {
+        return Binding {
+            return filterModel.editingState != .idle
+        } set: { value in
+            if value == false {
+                filterModel.editingState = .idle
+            }
+        }
+
+    }
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(editingFilter: $editingFilter)
+                .sheet(isPresented: isEditing) {
+                    FilterEditView(filter: filterModel.editingFilter)
+                }
+                .onChange(of: editingFilter) { _ in
+                    self.isEditing.wrappedValue = true
+                }
                 .environmentObject(pathModel)
+                .environmentObject(filterModel)
         }
         .commands {
             SidebarCommands()
@@ -70,6 +102,14 @@ struct ClientApp: App {
                     NotificationCenter.default.post(name: .RefreshData, object: nil)
                 }
                 .keyboardShortcut("r")
+                Divider()
+            }
+            CommandGroup(after: CommandGroupPlacement.newItem) {
+                Divider()
+                Button("New Filter…") {
+                    self.filterModel.editingState = .newFilter
+                    self.isEditing.wrappedValue = true
+                }
                 Divider()
             }
         }

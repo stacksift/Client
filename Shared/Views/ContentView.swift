@@ -6,17 +6,20 @@
 //
 
 import SwiftUI
+import Models
 
 struct ContentView: View {
     @StateObject var pathModel: PathViewModel
+    @Binding var editingFilter: Filter
 
-    init() {
+    init(editingFilter: Binding<Filter>) {
+        self._editingFilter = editingFilter
         self._pathModel = StateObject(wrappedValue: PathViewModel())
     }
 
     var body: some View {
         NavigationView {
-            SidebarView()
+            SidebarView(editingFilter: $editingFilter)
             Text("path content")
                 .padding()
         }
@@ -40,6 +43,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(editingFilter: .constant(Filter.newFilter))
     }
 }

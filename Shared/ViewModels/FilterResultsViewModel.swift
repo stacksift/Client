@@ -3,10 +3,6 @@ import SiftServices
 import Combine
 import Foundation
 
-extension NSNotification.Name {
-    static let RefreshData = Notification.Name("RefreshData")
-}
-
 public class FilterResultsViewModel: ObservableObject {
     @Published public private(set) var results: [Event]
 

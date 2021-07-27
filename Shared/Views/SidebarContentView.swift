@@ -46,12 +46,15 @@ struct SidebarLinkView: View {
 }
 
 struct SidebarContentView: View {
-    @StateObject var filterModel: FilterListViewModel
+    @EnvironmentObject var filterModel: FilterListViewModel
     @EnvironmentObject var pathModel: PathViewModel
     @State var activeEntry: PathEntry?
+    @State private var showingAlert = false
+    
+    @Binding var editingFilter: Filter
 
-    init() {
-        self._filterModel = StateObject(wrappedValue: FilterListViewModel())
+    init(editingFilter: Binding<Filter>) {
+        self._editingFilter = editingFilter
     }
 
     private var filters: [Filter] {
@@ -62,16 +65,56 @@ struct SidebarContentView: View {
         return pathModel.entries
     }
 
+    private func setPasteboardString(_ value: String) {
+        let pasteBoard = NSPasteboard.general
+        pasteBoard.clearContents()
+
+        pasteBoard.setString(value, forType: .string)
+    }
+
     var body: some View {
         List {
             Section(header: Text("Filters")) {
-                ForEach(filters, id: \.id) { filter in
+                ForEach(filters) { filter in
                     SidebarLinkView(rootFilter: filter, activeEntry: $activeEntry)
+                        .contextMenu {
+                            Button {
+                                setPasteboardString(filter.title)
+                            } label: {
+                                Label("Copy Name", systemImage: "file")
+                            }
+
+                            Button {
+                                self.filterModel.editingState = .edit(filter)
+                            } label: {
+                                Label("Edit…", systemImage: "file")
+                            }
+
+                            Button {
+                                showingAlert = true
+                            } label: {
+                                Label("Remove…", systemImage: "file")
+                            }
+                            .alert(isPresented: $showingAlert) {
+                                Alert(title: Text("Delete \(filter.title)"),
+                                      message: Text("This action cannot be undone."),
+                                      primaryButton: .cancel(), secondaryButton: .destructive(Text("Delete"), action: {
+                                        self.filterModel.deleteFilter(filter)
+                                      }))
+                            }
+                        }
                 }
             }
             Section(header: Text("Path")) {
                 ForEach(pathEntries, id: \.id) { entry in
                     SidebarLinkView(entry: entry, activeEntry: $activeEntry)
+                        .contextMenu {
+                            Button {
+                                setPasteboardString(entry.title)
+                            } label: {
+                                Label("Copy Name", systemImage: "file")
+                            }
+                        }
                 }
             }
         }
@@ -84,7 +127,7 @@ struct SidebarContentView: View {
 #if DEBUG
 struct SidebarContentView_Previews: PreviewProvider {
     static var previews: some View {
-        SidebarContentView()
+        SidebarContentView(editingFilter: .constant(Filter.newFilter))
     }
 }
 #endif

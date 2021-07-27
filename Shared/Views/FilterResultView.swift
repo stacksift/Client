@@ -44,7 +44,7 @@ import MockServiceImplemenations
 
 struct FilterResultView_Previews: PreviewProvider {
     static var previews: some View {
-        let filter = Filter(title: "default", dateRange: .allTime)
+        let filter = Filter(title: "default", timeWindow: .lastYear)
 
         return FilterResultView(services: Services.mock, filter: filter, activeEntry: .constant(.filter(filter)))
     }

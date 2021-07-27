@@ -6,10 +6,13 @@
 //
 
 import SwiftUI
+import Models
 
 struct SidebarView: View {
+    @Binding var editingFilter: Filter
+
     var body: some View {
-        SidebarContentView()
+        SidebarContentView(editingFilter: $editingFilter)
             .listStyle(SidebarListStyle())
             .frame(idealWidth: 250)
     }
@@ -17,6 +20,6 @@ struct SidebarView: View {
 
 struct SidebarView_Previews: PreviewProvider {
     static var previews: some View {
-        SidebarView()
+        SidebarView(editingFilter: .constant(Filter.newFilter))
     }
 }

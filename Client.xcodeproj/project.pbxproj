@@ -20,7 +20,6 @@
 		C96977BD261F5D7600C4988F /* FilterResultsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96977BB261F5D7600C4988F /* FilterResultsViewModel.swift */; };
 		C96977C3261F977700C4988F /* LazyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96977C2261F977700C4988F /* LazyView.swift */; };
 		C96977C4261F97AE00C4988F /* LazyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96977C2261F977700C4988F /* LazyView.swift */; };
-		C96977CA2624CA8800C4988F /* OAuth in Frameworks */ = {isa = PBXBuildFile; productRef = C96977C92624CA8800C4988F /* OAuth */; };
 		C980DCBD263B35F90047D2E1 /* symboltool in CopyFiles */ = {isa = PBXBuildFile; fileRef = C980DCBB263B35E50047D2E1 /* symboltool */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		C9903073267BA6D400EB1623 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9903072267BA6D400EB1623 /* Sparkle.framework */; };
 		C9903074267BA6D900EB1623 /* Sparkle.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = C9903072267BA6D400EB1623 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -41,6 +40,8 @@
 		C9BE061F262F4008009C3CDC /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BE061D262F4008009C3CDC /* ChartView.swift */; };
 		C9BE0621262F5C86009C3CDC /* TimeseriesResultsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BE0620262F5C86009C3CDC /* TimeseriesResultsViewModel.swift */; };
 		C9BE0622262F5C86009C3CDC /* TimeseriesResultsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BE0620262F5C86009C3CDC /* TimeseriesResultsViewModel.swift */; };
+		C9E26A1826AF0ADF00615F27 /* FilterEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E26A1726AF0ADF00615F27 /* FilterEditView.swift */; };
+		C9E26A1926AF0ADF00615F27 /* FilterEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E26A1726AF0ADF00615F27 /* FilterEditView.swift */; };
 		C9E439BC261CB42B00A951F8 /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E439BB261CB42B00A951F8 /* Tests_iOS.swift */; };
 		C9E439C7261CB42B00A951F8 /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E439C6261CB42B00A951F8 /* Tests_macOS.swift */; };
 		C9E439C9261CB42B00A951F8 /* ClientApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E439A0261CB42600A951F8 /* ClientApp.swift */; };
@@ -115,7 +116,6 @@
 		C96977B6261F51E400C4988F /* FilterResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterResultView.swift; sourceTree = "<group>"; };
 		C96977B9261F53B000C4988F /* EventTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTableView.swift; sourceTree = "<group>"; };
 		C96977BB261F5D7600C4988F /* FilterResultsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterResultsViewModel.swift; sourceTree = "<group>"; };
-		C96977C1261F858D00C4988F /* OAuth */ = {isa = PBXFileReference; lastKnownFileType = folder; path = OAuth; sourceTree = "<group>"; };
 		C96977C2261F977700C4988F /* LazyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LazyView.swift; sourceTree = "<group>"; };
 		C980DCBB263B35E50047D2E1 /* symboltool */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = symboltool; sourceTree = "<group>"; };
 		C9903072267BA6D400EB1623 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sparkle.framework; path = sparkle/build/Build/Products/Release/Sparkle.framework; sourceTree = "<group>"; };
@@ -130,6 +130,7 @@
 		C9BE061A262F3FCA009C3CDC /* Fill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fill.swift; sourceTree = "<group>"; };
 		C9BE061D262F4008009C3CDC /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
 		C9BE0620262F5C86009C3CDC /* TimeseriesResultsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeseriesResultsViewModel.swift; sourceTree = "<group>"; };
+		C9E26A1726AF0ADF00615F27 /* FilterEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterEditView.swift; sourceTree = "<group>"; };
 		C9E439A0261CB42600A951F8 /* ClientApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientApp.swift; sourceTree = "<group>"; };
 		C9E439A1261CB42600A951F8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C9E439A2261CB42B00A951F8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -161,7 +162,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C96977CA2624CA8800C4988F /* OAuth in Frameworks */,
 				C9E439ED261E23D900A951F8 /* Models in Frameworks */,
 				C92877762624D26D004C21F4 /* SiftServices in Frameworks */,
 				C92877742624D26A004C21F4 /* SiftNetwork in Frameworks */,
@@ -212,6 +212,7 @@
 				C9BE061426274298009C3CDC /* ReportTextView.swift */,
 				C9BE061A262F3FCA009C3CDC /* Fill.swift */,
 				C9BE061D262F4008009C3CDC /* ChartView.swift */,
+				C9E26A1726AF0ADF00615F27 /* FilterEditView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -225,7 +226,6 @@
 				C9E439BA261CB42B00A951F8 /* Tests iOS */,
 				C9E439C5261CB42B00A951F8 /* Tests macOS */,
 				C9E439E8261E234000A951F8 /* Models */,
-				C96977C1261F858D00C4988F /* OAuth */,
 				C93E5A682624D058006A1054 /* SiftServices */,
 				C93E5A662624CFA1006A1054 /* SiftNetwork */,
 				C9E439A8261CB42B00A951F8 /* Products */,
@@ -342,7 +342,6 @@
 			name = "Client (macOS)";
 			packageProductDependencies = (
 				C9E439EC261E23D900A951F8 /* Models */,
-				C96977C92624CA8800C4988F /* OAuth */,
 				C92877732624D26A004C21F4 /* SiftNetwork */,
 				C92877752624D26D004C21F4 /* SiftServices */,
 			);
@@ -505,6 +504,7 @@
 				C9BE06122627350B009C3CDC /* ReportView.swift in Sources */,
 				C9BE060C26273499009C3CDC /* PathContentView.swift in Sources */,
 				C9BE0618262742DF009C3CDC /* ReportViewModel.swift in Sources */,
+				C9E26A1826AF0ADF00615F27 /* FilterEditView.swift in Sources */,
 				C96977C3261F977700C4988F /* LazyView.swift in Sources */,
 				C9BE061B262F3FCA009C3CDC /* Fill.swift in Sources */,
 				C9E439E1261CB6A700A951F8 /* SidebarContentView.swift in Sources */,
@@ -526,6 +526,7 @@
 				C9E439DF261CB4F200A951F8 /* SidebarView.swift in Sources */,
 				C9BE06132627350B009C3CDC /* ReportView.swift in Sources */,
 				C9BE060D26273499009C3CDC /* PathContentView.swift in Sources */,
+				C9E26A1926AF0ADF00615F27 /* FilterEditView.swift in Sources */,
 				C96977BD261F5D7600C4988F /* FilterResultsViewModel.swift in Sources */,
 				C9BE0619262742DF009C3CDC /* ReportViewModel.swift in Sources */,
 				C9E439E2261CB6A700A951F8 /* SidebarContentView.swift in Sources */,
@@ -919,10 +920,6 @@
 		C92877752624D26D004C21F4 /* SiftServices */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = SiftServices;
-		};
-		C96977C92624CA8800C4988F /* OAuth */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = OAuth;
 		};
 		C96977CC2624CBB500C4988F /* OAuth */ = {
 			isa = XCSwiftPackageProductDependency;
