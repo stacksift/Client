@@ -1,26 +1,6 @@
 import SwiftUI
 
-struct ReportTextView: View {
-    let text: String
-
-    var body: some View {
-        ScrollView {
-            Text(text)
-                .font(Font.system(.body, design: .monospaced))
-                .multilineTextAlignment(.leading)
-                .frame(maxHeight: .infinity)
-                .padding()
-        }
-    }
-}
-
-struct ReportTextView_Previews: PreviewProvider {
-    static var previews: some View {
-        ReportTextView(text: "a big report")
-    }
-}
-
-struct NewReportTextView: NSViewRepresentable {
+struct ReportTextView: NSViewRepresentable {
     let text: NSAttributedString
 
     func makeNSView(context: Context) -> NSScrollView {

@@ -14,7 +14,7 @@ struct ReportView: View {
 
     var body: some View {
         VStack {
-            NewReportTextView(text: model.text)
+            ReportTextView(text: model.text)
             EventTableView(events: model.events, activeEntry: activeEntry)
                 .padding([.top], 10.0)
                 .frame(maxHeight: 200.0)
