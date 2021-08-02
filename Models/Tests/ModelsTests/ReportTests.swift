@@ -11,7 +11,7 @@ final class ReportTests: XCTestCase {
         let expectedOutputURL = try XCTUnwrap(bundle.url(forResource: "08a3eb98c83a4ab9b9cc7a890967b4a8", withExtension: "crash"))
         let expectedOutput = try String(contentsOf: expectedOutputURL)
 
-        let output = try report.renderReportCrash()
+        let output = try report.renderReportCrash().string
 
         XCTAssertEqual(output, expectedOutput)
     }

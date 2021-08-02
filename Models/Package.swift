@@ -22,7 +22,7 @@ let package = Package(
             dependencies: ["Models"],
             resources: [
                 .copy("Resources/08a3eb98c83a4ab9b9cc7a890967b4a8.report"),
-                .copy("Resources/08a3eb98c83a4ab9b9cc7a890967b4a8.crash")
+                .copy("Resources/08a3eb98c83a4ab9b9cc7a890967b4a8.crash"),
             ]),
     ]
 )
