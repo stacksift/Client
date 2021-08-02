@@ -35,8 +35,20 @@ public extension Publisher where Output == NetworkService.Output, Failure == Net
 }
 
 public extension NetworkService {
+    private var extraHeaders: [String: String] {
+        let defaultsHeaders = UserDefaults.standard.dictionary(forKey: "ExtraHeaders") as? [String: String]
+
+        return defaultsHeaders ?? [:]
+    }
+
     func dataPublisher(for request: URLRequest) -> AnyPublisher<Data, Error> {
-        response(for: request)
+        var extrasRequest = request
+
+        for (header, value) in extraHeaders {
+            extrasRequest.addValue(value, forHTTPHeaderField: header)
+        }
+
+        return response(for: extrasRequest)
         .HTTPResponse()
         .tryMap({ resp -> Data in
             switch resp {
