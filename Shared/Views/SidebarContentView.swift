@@ -98,7 +98,8 @@ struct SidebarContentView: View {
                             .alert(isPresented: $showingAlert) {
                                 Alert(title: Text("Delete \(filter.title)"),
                                       message: Text("This action cannot be undone."),
-                                      primaryButton: .cancel(), secondaryButton: .destructive(Text("Delete"), action: {
+                                      primaryButton: .cancel(),
+                                      secondaryButton: .destructive(Text("Delete"), action: {
                                         self.filterModel.deleteFilter(filter)
                                       }))
                             }
