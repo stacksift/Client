@@ -1,0 +1,5 @@
+SWIFT_VERSION = 5.0
+
+MACOSX_DEPLOYMENT_TARGET = 11.0
+
+FRAMEWORK_SEARCH_PATHS = $(inherited) $(PROJECT_DIR)/sparkle/build/Build/Products/Release
