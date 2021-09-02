@@ -63,7 +63,7 @@ class EventExtrasViewController: XiblessViewController<NSScrollView> {
 
         let bounds = tableView.frameOfCell(atColumn: 0, row: row)
 
-        let event = content.events[row]
+        let event = content.visibleEvents[row]
 
         let relationshipView = EventRelationshipDetailView(event: event, eventSet: content) { [unowned self] in
             self.popover?.close()
@@ -83,7 +83,7 @@ class EventExtrasViewController: XiblessViewController<NSScrollView> {
 
 extension EventExtrasViewController: NSTableViewDelegate {
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        let event = content.events[row]
+        let event = content.visibleEvents[row]
 
         let cell = tableColumn?.makeReusableView(generator: { () -> NSView in
             let uiView = EventRelationshipCellView(event: event)
@@ -97,6 +97,6 @@ extension EventExtrasViewController: NSTableViewDelegate {
 
 extension EventExtrasViewController: NSTableViewDataSource {
     func numberOfRows(in tableView: NSTableView) -> Int {
-        return content.events.count
+        return content.visibleEvents.count
     }
 }
