@@ -28,7 +28,20 @@ class EventsViewController: XiblessViewController<NSView> {
 
     var content: Content {
         get { representedObject as! Content }
-        set { representedObject = newValue }
+        set {
+            switch newValue {
+            case .eventSet(let event, let set):
+                let sortedEvents = set.events.sorted(by: { (a, b) in
+                    return a.metrics.occurrences > b.metrics.occurrences
+                })
+
+                let sortedSet = EventSet(events: sortedEvents, visibleIds: set.visibleIds)
+                
+                representedObject = Content.eventSet(event, sortedSet)
+            default:
+                representedObject = newValue
+            }
+        }
     }
 
     override var representedObject: Any? {
