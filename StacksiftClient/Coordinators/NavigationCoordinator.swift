@@ -19,7 +19,7 @@ class NavigationCoordinator {
         self.apiClient = apiClient
 
         self.contentViewController = ContentPresentingViewController()
-        self.sidebarViewController = SidebarViewController()
+        self.sidebarViewController = SidebarViewController(apiClient: apiClient)
 
         self.content = []
 

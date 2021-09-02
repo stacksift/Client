@@ -25,19 +25,32 @@ class ColorView: NSView {
 }
 
 class SidebarViewController: XiblessViewController<NSView> {
-    let navigationViewController = NavigationListViewController()
+    let navigationViewController: NavigationListViewController
+    let missingSymbolsViewController: MissingSymbolsSummaryViewController
+
+    init(apiClient: APIClient) {
+        self.navigationViewController = NavigationListViewController()
+        self.missingSymbolsViewController = MissingSymbolsSummaryViewController(apiClient: apiClient)
+
+        super.init()
+    }
 
     override func loadView() {
         self.view = NSView()
 
         let navView = navigationViewController.view
+        let missingSymbolsView = missingSymbolsViewController.view
 
-        view.subviews = [navView]
+        view.subviews = [navView, missingSymbolsView]
         view.subviewsUseAutoLayout = true
 
         NSLayoutConstraint.activate([
+            missingSymbolsView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            missingSymbolsView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            missingSymbolsView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+
             navView.topAnchor.constraint(equalTo: view.topAnchor),
-            navView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            navView.bottomAnchor.constraint(equalTo: missingSymbolsView.topAnchor, constant: 10.0),
             navView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             navView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
         ])

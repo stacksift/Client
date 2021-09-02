@@ -63,6 +63,22 @@ extension APIClient {
         return networkService
             .loadResource(request: request)
     }
+
+    func missingSymbolsPublisher() -> AnyPublisher<[MissingSymbol]?, Never> {
+        var urlBuilder = URLComponents()
+
+        urlBuilder.scheme = url.scheme
+        urlBuilder.host = url.host
+
+        urlBuilder.path = "/v1/missing_symbols"
+
+        var request = URLRequest(url: urlBuilder.url!)
+
+        request.addValue("application/json", forHeader: .accept)
+
+        return networkService
+            .loadResource(request: request)
+    }
 }
 
 extension Filter {
