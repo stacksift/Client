@@ -1,0 +1,43 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "KeychainAccess",
+        "repositoryURL": "https://github.com/kishikawakatsumi/KeychainAccess",
+        "state": {
+          "branch": null,
+          "revision": "84e546727d66f1adc5439debad16270d0fdd04e7",
+          "version": "4.2.2"
+        }
+      },
+      {
+        "package": "OAuthenticator",
+        "repositoryURL": "https://github.com/stacksift/OAuthenticator",
+        "state": {
+          "branch": null,
+          "revision": "c5861fbd41738184a600374f030c55a32aeda903",
+          "version": "0.1.1"
+        }
+      },
+      {
+        "package": "OperationPlus",
+        "repositoryURL": "https://github.com/ChimeHQ/OperationPlus",
+        "state": {
+          "branch": null,
+          "revision": "bb81e4f1bb017edcd1307f950e011d1f4b1ea3a6",
+          "version": "1.5.2"
+        }
+      },
+      {
+        "package": "ViewPlus",
+        "repositoryURL": "https://github.com/ChimeHQ/ViewPlus",
+        "state": {
+          "branch": null,
+          "revision": "eca8a1df44b05359ce4d9699533bebd8709a5f7f",
+          "version": "1.1.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
