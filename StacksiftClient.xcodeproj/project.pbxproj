@@ -60,6 +60,8 @@
 		C920D7D626E15A9400DEA6FE /* MissingSymbolsDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C920D7D526E15A9300DEA6FE /* MissingSymbolsDetailsViewController.swift */; };
 		C94EFD0D26E553FB00C259D5 /* symboltool in Copy symboltool */ = {isa = PBXBuildFile; fileRef = C94EFD0B26E553DA00C259D5 /* symboltool */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		C9DAB1B026EF6F630012E9E2 /* OAuthenticator in Frameworks */ = {isa = PBXBuildFile; productRef = C9DAB1AF26EF6F630012E9E2 /* OAuthenticator */; };
+		C9DAB1B226EFA7C20012E9E2 /* EventOccurrenceMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DAB1B126EFA7C20012E9E2 /* EventOccurrenceMetrics.swift */; };
+		C9DAB1B426EFA8AF0012E9E2 /* EventMetricsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9DAB1B326EFA8AF0012E9E2 /* EventMetricsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -174,6 +176,8 @@
 		C920D7D326E14B0B00DEA6FE /* MissingSymbolsSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissingSymbolsSummaryView.swift; sourceTree = "<group>"; };
 		C920D7D526E15A9300DEA6FE /* MissingSymbolsDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MissingSymbolsDetailsViewController.swift; sourceTree = "<group>"; };
 		C94EFD0B26E553DA00C259D5 /* symboltool */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = symboltool; sourceTree = "<group>"; };
+		C9DAB1B126EFA7C20012E9E2 /* EventOccurrenceMetrics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventOccurrenceMetrics.swift; sourceTree = "<group>"; };
+		C9DAB1B326EFA8AF0012E9E2 /* EventMetricsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventMetricsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -286,6 +290,7 @@
 		C920D76A26BD925900DEA6FE /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C9DAB1B126EFA7C20012E9E2 /* EventOccurrenceMetrics.swift */,
 				C920D76B26BD926200DEA6FE /* EventMetrics.swift */,
 				C920D77326BDC8FD00DEA6FE /* TimeseriesPoint.swift */,
 				C920D77826C4299100DEA6FE /* DataSeries.swift */,
@@ -330,6 +335,7 @@
 				C920D7B826DEBA1600DEA6FE /* EventContentViewController.swift */,
 				C920D7CF26E1469400DEA6FE /* MissingSymbolsSummaryViewController.swift */,
 				C920D7D526E15A9300DEA6FE /* MissingSymbolsDetailsViewController.swift */,
+				C9DAB1B326EFA8AF0012E9E2 /* EventMetricsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -529,6 +535,7 @@
 				C920D75C26BD8AEE00DEA6FE /* AuthenticatedNetworkService.swift in Sources */,
 				C920D79426C6C64F00DEA6FE /* StacktraceFramesViewController.swift in Sources */,
 				C920D78E26C5A6FE00DEA6FE /* EventDetailsViewController.swift in Sources */,
+				C9DAB1B226EFA7C20012E9E2 /* EventOccurrenceMetrics.swift in Sources */,
 				C920D7D626E15A9400DEA6FE /* MissingSymbolsDetailsViewController.swift in Sources */,
 				C920D79626C6DB2000DEA6FE /* EventExtrasViewController.swift in Sources */,
 				C920D77726C4296300DEA6FE /* ChartView.swift in Sources */,
@@ -549,6 +556,7 @@
 				C920D78626C574F200DEA6FE /* BlockMenuItem.swift in Sources */,
 				C920D7D426E14B0B00DEA6FE /* MissingSymbolsSummaryView.swift in Sources */,
 				C920D75526BD86A000DEA6FE /* Codable+Dictionary.swift in Sources */,
+				C9DAB1B426EFA8AF0012E9E2 /* EventMetricsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

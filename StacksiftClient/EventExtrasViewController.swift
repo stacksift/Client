@@ -13,7 +13,7 @@ class EventExtrasViewController: XiblessViewController<NSScrollView> {
             tableView.reloadData()
         }
     }
-
+    
     typealias ViewEventsAction = (EventSet) -> Void
     var viewEventsAction: ViewEventsAction?
 

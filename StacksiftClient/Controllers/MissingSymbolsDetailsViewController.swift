@@ -127,7 +127,6 @@ extension MissingSymbolsDetailsViewController: NSTableViewDelegate {
         }
 
         return cell
-
     }
 }
 

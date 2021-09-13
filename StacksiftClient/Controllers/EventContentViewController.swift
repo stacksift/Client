@@ -30,6 +30,8 @@ class EventContentViewController: XiblessViewController<NSView> {
             textViewController.text = renderValue ?? NSAttributedString(string: "failed")
 
             detailsViewController.report = report
+
+            reloadMetrics()
         }
     }
 
@@ -75,6 +77,17 @@ class EventContentViewController: XiblessViewController<NSView> {
             .receive(on: RunLoop.main)
             .sink(receiveValue: { (newValue: Report?) in
                 self.report = newValue
+            })
+            .store(in: &cancellables)
+    }
+
+    private func reloadMetrics() {
+        guard let report = report else { return }
+
+        apiClient.eventMetricsPublisher(for: report)
+            .receive(on: RunLoop.main)
+            .sink(receiveValue: { (newValue: [EventOccurrenceMetrics]?) in
+                self.detailsViewController.metrics = newValue
             })
             .store(in: &cancellables)
     }

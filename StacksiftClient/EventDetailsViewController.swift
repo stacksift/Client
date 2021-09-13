@@ -7,10 +7,16 @@ class EventDetailsViewController: XiblessViewController<NSView> {
     private let headerView: NSHostingView<StacktraceHeaderView>
     private let framesViewController: StacktraceFramesViewController
     private let extrasViewController: EventExtrasViewController
+    private let metricsViewController: EventMetricsViewController
 
     var report: Report? {
         get { return representedObject as? Report }
         set { representedObject = newValue }
+    }
+
+    var metrics: [EventOccurrenceMetrics]? {
+        get { return metricsViewController.metrics }
+        set { metricsViewController.metrics = newValue }
     }
 
     override var representedObject: Any? {
@@ -42,6 +48,7 @@ class EventDetailsViewController: XiblessViewController<NSView> {
         self.headerView = NSHostingView(rootView: StacktraceHeaderView(title: "title", subtitle: "subtitle", extraInfo: "extra"))
         self.framesViewController = StacktraceFramesViewController()
         self.extrasViewController = EventExtrasViewController()
+        self.metricsViewController = EventMetricsViewController()
 
         super.init()
     }
@@ -51,11 +58,12 @@ class EventDetailsViewController: XiblessViewController<NSView> {
 
         let framesView = framesViewController.view
         let extrasView = extrasViewController.view
+        let metricsView = metricsViewController.view
         let border = NSBox()
 
         border.boxType = .separator
 
-        view.subviews = [headerView, framesView, border, extrasView]
+        view.subviews = [headerView, framesView, border, extrasView, metricsView]
         view.subviewsUseAutoLayout = true
 
         NSLayoutConstraint.activate([
@@ -69,9 +77,14 @@ class EventDetailsViewController: XiblessViewController<NSView> {
             framesView.trailingAnchor.constraint(equalTo: headerView.trailingAnchor),
 
             extrasView.topAnchor.constraint(equalTo: headerView.topAnchor),
-            extrasView.bottomAnchor.constraint(equalTo: framesView.bottomAnchor),
+            extrasView.heightAnchor.constraint(greaterThanOrEqualToConstant: 150.0),
             extrasView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10.0),
             extrasView.widthAnchor.constraint(equalToConstant: 250.0),
+            extrasView.bottomAnchor.constraint(equalTo: metricsView.topAnchor, constant: 10.0),
+
+            metricsView.bottomAnchor.constraint(equalTo: framesView.bottomAnchor),
+            metricsView.leadingAnchor.constraint(equalTo: extrasView.leadingAnchor),
+            metricsView.trailingAnchor.constraint(equalTo: extrasView.trailingAnchor),
 
             border.topAnchor.constraint(equalTo: extrasView.topAnchor),
             border.bottomAnchor.constraint(equalTo: extrasView.bottomAnchor),

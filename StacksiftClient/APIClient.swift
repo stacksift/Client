@@ -79,6 +79,38 @@ extension APIClient {
         return networkService
             .loadResource(request: request)
     }
+
+    func eventMetricsPublisher(for report: Report) -> AnyPublisher<[EventOccurrenceMetrics]?, Never> {
+        let platform = report.platform
+        let executable = report.hostExecutable
+        let signatures = report.eventIds
+
+        return eventMetricsPublisher(for: platform, executable: executable, signatures: signatures)
+    }
+
+    func eventMetricsPublisher(for platform: String, executable: String, signatures: [String]) -> AnyPublisher<[EventOccurrenceMetrics]?, Never> {
+        var urlBuilder = URLComponents()
+
+        urlBuilder.scheme = url.scheme
+        urlBuilder.host = url.host
+
+        urlBuilder.path = "/v1/events_metrics"
+
+        let sigItems = signatures.map { URLQueryItem(name: "signature", value: $0) }
+        let queryItems = sigItems + [
+            URLQueryItem(name: "host", value: executable),
+            URLQueryItem(name: "platform", value: platform),
+        ]
+
+        urlBuilder.queryItems = queryItems
+
+        var request = URLRequest(url: urlBuilder.url!)
+
+        request.addValue("application/json", forHeader: .accept)
+
+        return networkService
+            .loadResource(request: request)
+    }
 }
 
 extension Filter {
