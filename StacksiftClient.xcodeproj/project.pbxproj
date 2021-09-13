@@ -43,7 +43,6 @@
 		C920D79226C6C28100DEA6FE /* StacktraceHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C920D79126C6C28100DEA6FE /* StacktraceHeaderView.swift */; };
 		C920D79426C6C64F00DEA6FE /* StacktraceFramesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C920D79326C6C64F00DEA6FE /* StacktraceFramesViewController.swift */; };
 		C920D79626C6DB2000DEA6FE /* EventExtrasViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C920D79526C6DB2000DEA6FE /* EventExtrasViewController.swift */; };
-		C920D79C26D5422C00DEA6FE /* OAuthenticator in Frameworks */ = {isa = PBXBuildFile; productRef = C920D79B26D5422C00DEA6FE /* OAuthenticator */; };
 		C920D79E26D542A700DEA6FE /* EventRelationshipCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C920D79D26D542A700DEA6FE /* EventRelationshipCellView.swift */; };
 		C920D7A026D548CB00DEA6FE /* EventRelationshipDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C920D79F26D548CB00DEA6FE /* EventRelationshipDetailView.swift */; };
 		C920D7A726D814DD00DEA6FE /* EventSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = C920D7A626D814DD00DEA6FE /* EventSet.swift */; };
@@ -60,6 +59,7 @@
 		C920D7D426E14B0B00DEA6FE /* MissingSymbolsSummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C920D7D326E14B0B00DEA6FE /* MissingSymbolsSummaryView.swift */; };
 		C920D7D626E15A9400DEA6FE /* MissingSymbolsDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C920D7D526E15A9300DEA6FE /* MissingSymbolsDetailsViewController.swift */; };
 		C94EFD0D26E553FB00C259D5 /* symboltool in Copy symboltool */ = {isa = PBXBuildFile; fileRef = C94EFD0B26E553DA00C259D5 /* symboltool */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		C9DAB1B026EF6F630012E9E2 /* OAuthenticator in Frameworks */ = {isa = PBXBuildFile; productRef = C9DAB1AF26EF6F630012E9E2 /* OAuthenticator */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -181,11 +181,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C920D79C26D5422C00DEA6FE /* OAuthenticator in Frameworks */,
 				C920D75F26BD8B1700DEA6FE /* KeychainAccess in Frameworks */,
 				C920D7C226DFDAEF00DEA6FE /* Sparkle.framework in Frameworks */,
 				C920D75126BC53F800DEA6FE /* OperationPlus in Frameworks */,
 				C920D74C26BB02E200DEA6FE /* ViewPlus in Frameworks */,
+				C9DAB1B026EF6F630012E9E2 /* OAuthenticator in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -366,7 +366,7 @@
 				C920D74B26BB02E200DEA6FE /* ViewPlus */,
 				C920D75026BC53F800DEA6FE /* OperationPlus */,
 				C920D75E26BD8B1700DEA6FE /* KeychainAccess */,
-				C920D79B26D5422C00DEA6FE /* OAuthenticator */,
+				C9DAB1AF26EF6F630012E9E2 /* OAuthenticator */,
 			);
 			productName = StacksiftClient;
 			productReference = C920D71926BB001500DEA6FE /* Stacksift.app */;
@@ -443,7 +443,7 @@
 				C920D74A26BB02E200DEA6FE /* XCRemoteSwiftPackageReference "ViewPlus" */,
 				C920D74F26BC53F800DEA6FE /* XCRemoteSwiftPackageReference "OperationPlus" */,
 				C920D75D26BD8B1700DEA6FE /* XCRemoteSwiftPackageReference "KeychainAccess" */,
-				C920D79A26D5422C00DEA6FE /* XCRemoteSwiftPackageReference "OAuthenticator" */,
+				C9DAB1AE26EF6F630012E9E2 /* XCRemoteSwiftPackageReference "OAuthenticator" */,
 			);
 			productRefGroup = C920D71A26BB001500DEA6FE /* Products */;
 			projectDirPath = "";
@@ -886,12 +886,12 @@
 				minimumVersion = 4.2.2;
 			};
 		};
-		C920D79A26D5422C00DEA6FE /* XCRemoteSwiftPackageReference "OAuthenticator" */ = {
+		C9DAB1AE26EF6F630012E9E2 /* XCRemoteSwiftPackageReference "OAuthenticator" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/stacksift/OAuthenticator";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.1.1;
+				minimumVersion = 0.1.2;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -912,9 +912,9 @@
 			package = C920D75D26BD8B1700DEA6FE /* XCRemoteSwiftPackageReference "KeychainAccess" */;
 			productName = KeychainAccess;
 		};
-		C920D79B26D5422C00DEA6FE /* OAuthenticator */ = {
+		C9DAB1AF26EF6F630012E9E2 /* OAuthenticator */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = C920D79A26D5422C00DEA6FE /* XCRemoteSwiftPackageReference "OAuthenticator" */;
+			package = C9DAB1AE26EF6F630012E9E2 /* XCRemoteSwiftPackageReference "OAuthenticator" */;
 			productName = OAuthenticator;
 		};
 /* End XCSwiftPackageProductDependency section */
