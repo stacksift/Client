@@ -44,6 +44,8 @@ class EventMetricsViewController: XiblessViewController<NSView> {
             tableView.delegate = self
             tableView.dataSource = self
         }
+
+        adjustTables()
     }
 
     override func loadView() {
@@ -109,27 +111,13 @@ class EventMetricsViewController: XiblessViewController<NSView> {
     private func reload() {
         tableViews.forEach({ $0.reloadData() })
 
-        if let column = deviceModelTable.tableColumn(withIdentifier: .countColumn) {
-            column.setWidthToFitContents()
+        adjustTables()
+    }
 
-            let spacing = deviceModelTable.intercellSpacing.width
-            let width = deviceModelTable.visibleRect.width - column.width - spacing
-
-            deviceModelTable.tableColumn(withIdentifier: .modelColumn)?.width = width
-        }
-
-        osVersionTable.tableColumn(withIdentifier: .countColumn)?.setWidthToFitContents()
-        osVersionTable.tableColumn(withIdentifier: .versionColumn)?.setWidthToFitContents()
-
-        if let column = hostVersionTable.tableColumn(withIdentifier: .countColumn) {
-            column.setWidthToFitContents()
-
-            let spacing = deviceModelTable.intercellSpacing.width
-            let width = (hostVersionTable.visibleRect.width - column.width) / 2.0 - spacing * 2.0
-
-            hostVersionTable.tableColumn(withIdentifier: .versionColumn)?.width = width
-            hostVersionTable.tableColumn(withIdentifier: .buildColumn)?.width = width
-        }
+    private func adjustTables() {
+        deviceModelTable.sizeColumnsToFit(with: [.countColumn])
+        osVersionTable.sizeColumnsToFit(with: [.countColumn, .versionColumn])
+        hostVersionTable.sizeColumnsToFit(with: [.countColumn])
     }
 
     private var osVersions: [EventOccurrenceMetrics.VersionMetric] {

@@ -86,6 +86,28 @@ extension NSTableColumn {
     }
 }
 
+extension NSTableView {
+    func sizeColumnsToFit(with identifiers: [NSUserInterfaceItemIdentifier]) {
+        let sizedColumns = identifiers.compactMap({ tableColumn(withIdentifier: $0) })
+
+        sizedColumns.forEach { column in
+            column.setWidthToFitContents()
+        }
+
+        let leftOverWidth = sizedColumns.reduce(visibleRect.width, { $0 - $1.width })
+
+        guard leftOverWidth > 0.0 else { return }
+
+        let unsizedColumns = tableColumns.filter({ identifiers.contains($0.identifier) == false })
+
+        let columnWidth = leftOverWidth / CGFloat(unsizedColumns.count)
+
+        unsizedColumns.forEach { column in
+            column.width = columnWidth
+        }
+    }
+}
+
 class SizableTableCellView: NSTableCellView {
     override var intrinsicContentSize: NSSize {
         let textSize = textField?.intrinsicContentSize ?? .zero

@@ -33,7 +33,10 @@ class MissingSymbolsDetailsViewController: XiblessViewController<NSView> {
 
     private func reload() {
         tableView.reloadData()
+        adjustColumns()
+    }
 
+    private func adjustColumns() {
         let identifiers: [NSUserInterfaceItemIdentifier] = [
             .symbolHostColumn,
             .symbolMapIdColumn,
@@ -41,17 +44,16 @@ class MissingSymbolsDetailsViewController: XiblessViewController<NSView> {
             .symbolBuildColumn,
         ]
 
-        identifiers.compactMap({ tableView.tableColumn(withIdentifier: $0) }).forEach { column in
-            column.setWidthToFitContents()
-
-            column.maxWidth = column.width
-        }
+        tableView.sizeColumnsToFit(with: identifiers)
     }
+
     override func viewWillAppear() {
         super.viewWillAppear()
 
         tableView.delegate = self
         tableView.dataSource = self
+
+        adjustColumns()
     }
 
     override func loadView() {
@@ -89,7 +91,7 @@ class MissingSymbolsDetailsViewController: XiblessViewController<NSView> {
             dismissButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             dismissButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -10.0),
 
-            view.widthAnchor.constraint(greaterThanOrEqualToConstant: 650.0),
+            view.widthAnchor.constraint(greaterThanOrEqualToConstant: 750.0),
             view.heightAnchor.constraint(greaterThanOrEqualToConstant: 250.0),
         ])
     }
