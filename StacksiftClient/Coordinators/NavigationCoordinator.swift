@@ -40,9 +40,27 @@ class NavigationCoordinator {
 
             self.navigationContent = navContent
 
-            let dictionaries = navContent.filters.compactMap({ $0.toDictionary() })
+            saveFilters()
+        }
 
-            UserDefaults.standard.set(dictionaries, forKey: "Filters")
+        navigationViewController.createFilterAction = { [unowned self] (newFilter, _) in
+            var navContent = navigationContent
+
+            navContent.filters.append(newFilter)
+
+            self.navigationContent = navContent
+
+            saveFilters()
+        }
+
+        navigationViewController.deleteFilterAction = { [unowned self] (_, row) in
+            var navContent = navigationContent
+
+            navContent.filters.remove(at: row)
+
+            self.navigationContent = navContent
+
+            saveFilters()
         }
     }
 
@@ -54,15 +72,27 @@ class NavigationCoordinator {
         get { navigationViewController.content }
         set { navigationViewController.content = newValue }
     }
+
+    private func saveFilters() {
+        let dictionaries = navigationContent.filters.compactMap({ $0.toDictionary() })
+
+        UserDefaults.standard.set(dictionaries, forKey: "Filters")
+    }
 }
 
 extension NavigationCoordinator {
     private func loadFilters() -> [Filter] {
         guard let value = UserDefaults.standard.array(forKey: "Filters") as? [[String: Any]] else {
-            return []
+            return Filter.defaultList
         }
 
-        return value.compactMap({ Filter.fromDictionary($0) })
+        let decodedFilters = value.compactMap({ Filter.fromDictionary($0) })
+
+        guard decodedFilters.count > 0 else {
+            return Filter.defaultList
+        }
+
+        return decodedFilters
     }
 
     private func advanceToController(_ vc: NSViewController, for entry: NavigationListViewController.Entry) {

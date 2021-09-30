@@ -16,9 +16,16 @@ struct FilterEditForm: View {
             TextField("Title", text: $filter.title)
             TextField("Organizations", text: commaSeparatedBinding($filter.organizations))
             TextField("Hosts", text: commaSeparatedBinding($filter.hostExecutables))
-            TextField("Builds", text: commaSeparatedBinding($filter.builds))
             TextField("Kinds", text: commaSeparatedBinding($filter.kinds))
-            TextField("Versions", text: commaSeparatedBinding($filter.versions))
+            Group {
+                TextField("Versions", text: commaSeparatedBinding($filter.versions))
+                TextField("Builds", text: commaSeparatedBinding($filter.builds))
+            }
+            Group {
+                TextField("OS Builds", text: commaSeparatedBinding($filter.osBuilds))
+                TextField("OS Versions", text: commaSeparatedBinding($filter.osVersions))
+            }
+            TextField("Devices", text: commaSeparatedBinding($filter.devices))
             TextField("Platforms", text: commaSeparatedBinding($filter.platforms))
             Picker("Time Window", selection: $filter.timeWindow) {
                 ForEach(Filter.TimeWindow.allCases, id: \.self) {

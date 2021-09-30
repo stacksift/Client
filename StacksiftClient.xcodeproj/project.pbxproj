@@ -257,7 +257,6 @@
 				C920D76D26BDA36400DEA6FE /* EventListViewController.swift */,
 				C920D76F26BDC53000DEA6FE /* EventGraphViewController.swift */,
 				C920D77126BDC57D00DEA6FE /* EventsViewController.swift */,
-				C920D78B26C5915A00DEA6FE /* FilterEditViewController.swift */,
 				C920D78D26C5A6FE00DEA6FE /* EventDetailsViewController.swift */,
 				C920D79326C6C64F00DEA6FE /* StacktraceFramesViewController.swift */,
 				C920D79526C6DB2000DEA6FE /* EventExtrasViewController.swift */,
@@ -331,6 +330,7 @@
 		C920D7A126D6851600DEA6FE /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C920D78B26C5915A00DEA6FE /* FilterEditViewController.swift */,
 				C920D7B626DEBA0B00DEA6FE /* EventTextViewController.swift */,
 				C920D7B826DEBA1600DEA6FE /* EventContentViewController.swift */,
 				C920D7CF26E1469400DEA6FE /* MissingSymbolsSummaryViewController.swift */,

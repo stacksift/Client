@@ -6,6 +6,9 @@ public struct Filter: Codable {
     public var hostExecutables: Set<String>
     public var builds: Set<String>
     public var versions: Set<String>
+    public var osBuilds: Set<String>
+    public var osVersions: Set<String>
+    public var devices: Set<String>
     public var timeWindow: TimeWindow
     public var platforms: Set<String>
     public var organizations: Set<String>
@@ -19,6 +22,9 @@ public struct Filter: Codable {
         self.timeWindow = timeWindow
         self.platforms = platforms
         self.organizations = organizations
+        self.osBuilds = Set()
+        self.osVersions = Set()
+        self.devices = Set()
     }
 
     public static var newFilter: Filter = Filter(title: "New Filter", timeWindow: .lastYear)

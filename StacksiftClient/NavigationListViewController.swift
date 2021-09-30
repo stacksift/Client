@@ -60,6 +60,8 @@ class NavigationListViewController: XiblessViewController<NSScrollView> {
     var filterSelectionAction: FilterAction?
     var entrySelectionAction: EntryAction?
     var filterEditAction: FilterAction?
+    var createFilterAction: FilterAction?
+    var deleteFilterAction: FilterAction?
     private var reloading: Bool = false
 
     override init() {
@@ -69,7 +71,7 @@ class NavigationListViewController: XiblessViewController<NSScrollView> {
 
         self.content = Content(filters: [], entries: [])
         
-        tableView.menuProvider = { (_, row) in
+        tableView.menuProvider = { [unowned self] (_, row) in
             let item = self.getNavigationItem(for: row)
 
             guard case .filter = item else {
@@ -78,11 +80,11 @@ class NavigationListViewController: XiblessViewController<NSScrollView> {
 
             let menu = NSMenu()
 
-            menu.addItem(title: "Edit") {
+            menu.addItem(title: "Edit") { [unowned self] in
                 self.editFilter(at: row)
             }
 
-            menu.addItem(title: "Delete…") {
+            menu.addItem(title: "Delete…") { [unowned self] in
                 let alert = NSAlert()
 
                 alert.addButton(withTitle: "Delete")
@@ -91,7 +93,7 @@ class NavigationListViewController: XiblessViewController<NSScrollView> {
                 alert.informativeText = "This operation cannot be undone."
 
                 alert.beginSheetModal(for: self.view.window!) { response in
-                    print("delete response: \(response)")
+                    self.deleteFilter(at: row)
                 }
             }
 
@@ -130,14 +132,6 @@ class NavigationListViewController: XiblessViewController<NSScrollView> {
         }
     }
 
-    private func mapRowToFilterIndex(_ row: Int) -> Int? {
-        if row <= 0 {
-            return nil
-        }
-
-        return row - 1
-    }
-
     private func editFilter(at row: Int) {
         let item = self.getNavigationItem(for: row)
 
@@ -158,6 +152,18 @@ class NavigationListViewController: XiblessViewController<NSScrollView> {
 
             self.filterEditAction?(newFilter, idx)
         }
+    }
+
+    private func deleteFilter(at row: Int) {
+        let item = self.getNavigationItem(for: row)
+
+        guard case .filter(let filter) = item else {
+            fatalError()
+        }
+
+        let idx = row - 1
+
+        deleteFilterAction?(filter, idx)
     }
 
     override func viewWillAppear() {
@@ -220,6 +226,23 @@ class NavigationListViewController: XiblessViewController<NSScrollView> {
 
     private var shouldInvokeSelectionAction: Bool {
         return reloading == false && tableView.hasActiveMenu == false
+    }
+}
+
+extension NavigationListViewController {
+    @IBAction func newFilter(_ sender: Any?) {
+        let filter = Filter(title: "New Filter", kinds: Set(), hostExecutables: Set(), timeWindow: .last30Days, platforms: Set(), organizations: Set())
+        let controller = FilterEditViewController(filter: filter)
+
+        self.presentAsSheet(controller)
+
+        controller.responseHandler = { [unowned controller] (response, newFilter) in
+            self.dismiss(controller)
+
+            guard response == .OK else { return }
+
+            self.createFilterAction?(newFilter, -1)
+        }
     }
 }
 

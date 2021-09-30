@@ -121,6 +121,9 @@ extension Filter {
         let organizationParams = organizations.map({ ("organization", $0) })
         let buildParams = builds.map({ ("build", $0) })
         let versionParams = versions.map({ ("version", $0) })
+        let osVersionParams = versions.map({ ("os_version", $0) })
+        let osBuildParams = versions.map({ ("os_build", $0) })
+        let deviceParams = versions.map({ ("device", $0) })
 
         let epochRange = timeWindow.dateRange.epochTimeRange
 
@@ -134,7 +137,8 @@ extension Filter {
             items.append(URLQueryItem(name: "end_time", value: "\(epochRange.upperBound)"))
         }
 
-        let pairs = kindParams + hostAppParams + platformParams + organizationParams + buildParams + versionParams
+        let pairs = kindParams + hostAppParams + platformParams + organizationParams +
+            buildParams + versionParams + osVersionParams + osBuildParams + deviceParams
 
         for (key, value) in pairs {
             items.append(URLQueryItem(name: key, value: value))
